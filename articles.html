@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles - Liu Yi (Lewis)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <nav>
+        <a href="/" class="logo">lewis</a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/articles.html" class="active">Articles</a></li>
+          <li><a href="https://github.com/lewislulu" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="articles-page">
+      <div class="hero" style="padding-bottom:32px;">
+        <h1>Articles<span class="accent-dot">.</span></h1>
+        <p class="subtitle">Notes on AI, math, systems, and whatever else.</p>
+      </div>
+
+      <section>
+        <ul class="article-list" id="all-articles">
+          <!-- Populated by JS -->
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="https://github.com/lewislulu" target="_blank">GitHub</a>
+      </div>
+      <p>&copy; 2025 Liu Yi (Lewis)</p>
+    </footer>
+
+  </div>
+
+  <script src="js/articles.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const list = document.getElementById('all-articles');
+      if (window.ARTICLES.length === 0) {
+        list.innerHTML = '<li style="color:var(--text-tertiary);font-size:0.9rem;">Nothing here yet.</li>';
+        return;
+      }
+      window.ARTICLES.forEach(a => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <a href="/article.html?slug=${a.slug}">
+            <div>
+              <span class="article-title">${a.title}</span>
+              <div class="article-desc">${a.description || ''}</div>
+            </div>
+            <span class="article-date">${a.date}</span>
+          </a>`;
+        list.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>

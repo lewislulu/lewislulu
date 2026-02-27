@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article - Liu Yi (Lewis)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- KaTeX for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <!-- marked for markdown -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <nav>
+        <a href="/" class="logo">lewis</a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/articles.html" class="active">Articles</a></li>
+          <li><a href="https://github.com/lewislulu" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="article-header" id="article-header">
+        <div class="loading">Loading...</div>
+      </div>
+      <div class="article-content" id="article-content"></div>
+      <a href="/articles.html" class="back-link">&larr; Back to articles</a>
+    </main>
+
+    <footer style="margin-top:48px;">
+      <div class="footer-links">
+        <a href="https://github.com/lewislulu" target="_blank">GitHub</a>
+      </div>
+      <p>&copy; 2025 Liu Yi (Lewis)</p>
+    </footer>
+
+  </div>
+
+  <script src="js/articles.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+      const article = window.ARTICLES.find(a => a.slug === slug);
+
+      if (!article) {
+        document.getElementById('article-header').innerHTML =
+          '<h1>Not found</h1><p class="article-meta">This article does not exist.</p>';
+        return;
+      }
+
+      document.title = `${article.title} - Lewis`;
+
+      try {
+        const res = await fetch(`/articles/${slug}.md`);
+        if (!res.ok) throw new Error('Failed to load');
+        let md = await res.text();
+
+        // Strip YAML front-matter if present
+        if (md.startsWith('---')) {
+          const end = md.indexOf('---', 3);
+          if (end !== -1) md = md.slice(end + 3).trim();
+        }
+
+        // Protect math blocks from marked: replace $$ ... $$ and $ ... $
+        const mathBlocks = [];
+
+        // Display math: $$ ... $$
+        md = md.replace(/\$\$([\s\S]*?)\$\$/g, (_, tex) => {
+          const id = mathBlocks.length;
+          mathBlocks.push({ tex: tex.trim(), display: true });
+          return `<div class="math-placeholder" data-math-id="${id}"></div>`;
+        });
+
+        // Inline math: $ ... $ (not greedy, not inside code)
+        md = md.replace(/(?<![\\`])\$([^\$\n]+?)\$(?!`)/g, (_, tex) => {
+          const id = mathBlocks.length;
+          mathBlocks.push({ tex: tex.trim(), display: false });
+          return `<span class="math-placeholder" data-math-id="${id}"></span>`;
+        });
+
+        // Configure marked
+        marked.setOptions({
+          gfm: true,
+          breaks: false,
+          headerIds: false,
+          mangle: false,
+        });
+
+        const html = marked.parse(md);
+
+        document.getElementById('article-header').innerHTML = `
+          <h1>${article.title}</h1>
+          <div class="article-meta">${article.date}</div>`;
+
+        document.getElementById('article-content').innerHTML = html;
+
+        // Render math placeholders with KaTeX
+        document.querySelectorAll('.math-placeholder').forEach(el => {
+          const id = parseInt(el.getAttribute('data-math-id'));
+          const { tex, display } = mathBlocks[id];
+          try {
+            katex.render(tex, el, {
+              displayMode: display,
+              throwOnError: false,
+              trust: true,
+            });
+          } catch (e) {
+            el.textContent = tex;
+          }
+        });
+
+      } catch (err) {
+        document.getElementById('article-content').innerHTML =
+          '<p style="color:var(--text-tertiary);">Could not load article.</p>';
+      }
+    });
+  </script>
+</body>
+</html>

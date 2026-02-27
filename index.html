@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liu Yi (Lewis)</title>
+  <meta name="description" content="Personal site of Liu Yi (Lewis) -- CS, AI, LLM, Web3, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <nav>
+        <a href="/" class="logo">lewis</a>
+        <ul class="nav-links">
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/articles.html">Articles</a></li>
+          <li><a href="https://github.com/lewislulu" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>
+          <span class="first-name">Liu Yi</span><span class="accent-dot">.</span><br>
+        </h1>
+        <div class="subtitle">
+          CS grad who builds things with <span class="highlight-blue">AI</span>,
+          <span class="highlight-blue">LLMs</span>, and
+          <span class="highlight-blue">Web3</span>.
+          Writes CUDA C++, Python, JavaScript &mdash;
+          but let's be real, we <span class="highlight-red">vibe code</span> now.
+        </div>
+
+        <div class="tags">
+          <span class="tag blue">AI</span>
+          <span class="tag blue">LLM</span>
+          <span class="tag blue">Web3</span>
+          <span class="tag">CUDA C++</span>
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+        </div>
+
+        <div class="tags" style="margin-top: 12px;">
+          <span class="tag red">History</span>
+          <span class="tag red">Philosophy</span>
+          <span class="tag">Music</span>
+          <span class="tag">Art</span>
+          <span class="tag">Boxing</span>
+          <span class="tag">Physics</span>
+          <span class="tag">Finance</span>
+        </div>
+
+        <div class="vibe">
+          // we don't list skills anymore. we vibe code.
+        </div>
+      </div>
+
+      <section class="bordered">
+        <div class="section-title">Recent Articles</div>
+        <ul class="article-list" id="recent-articles">
+          <!-- Populated by JS -->
+        </ul>
+        <a href="/articles.html" class="back-link">All articles &rarr;</a>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="https://github.com/lewislulu" target="_blank">GitHub</a>
+      </div>
+      <p>&copy; 2025 Liu Yi (Lewis)</p>
+    </footer>
+
+  </div>
+
+  <script src="js/articles.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const list = document.getElementById('recent-articles');
+      const recent = window.ARTICLES.slice(0, 5);
+      if (recent.length === 0) {
+        list.innerHTML = '<li style="color:var(--text-tertiary);font-size:0.9rem;">Nothing here yet.</li>';
+        return;
+      }
+      recent.forEach(a => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <a href="/article.html?slug=${a.slug}">
+            <span class="article-title">${a.title}</span>
+            <span class="article-date">${a.date}</span>
+          </a>`;
+        list.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>
