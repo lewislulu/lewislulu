@@ -70,22 +70,18 @@
 
 ### 🤖 AI Tools I Use Daily
 
-<table>
-  <tr>
-    <td align="center" width="100"><a href="https://www.anthropic.com/claude-code"><img src="./assets/logos/claude.png" width="56" height="56"/><br><sub><b>Claude Code</b></sub></a></td>
-    <td align="center" width="100"><a href="https://openclaw.ai"><img src="./assets/logos/openclaw.png" width="56" height="56"/><br><sub><b>OpenClaw</b></sub></a></td>
-    <td align="center" width="100"><a href="https://github.com/plastic-labs"><img src="./assets/logos/hermes.png" width="56" height="56"/><br><sub><b>Hermes Agent</b></sub></a></td>
-    <td align="center" width="100"><a href="https://openai.com/codex"><img src="./assets/logos/openai.png" width="56" height="56"/><br><sub><b>Codex</b></sub></a></td>
-    <td align="center" width="100"><a href="https://gemini.google.com"><img src="./assets/logos/gemini.svg" width="56" height="56"/><br><sub><b>Gemini</b></sub></a></td>
-  </tr>
-  <tr>
-    <td align="center" width="100"><a href="https://antigravity.google"><img src="./assets/logos/google.svg" width="56" height="56"/><br><sub><b>Antigravity</b></sub></a></td>
-    <td align="center" width="100"><a href="https://cursor.com"><img src="./assets/logos/cursor.png" width="56" height="56"/><br><sub><b>Cursor</b></sub></a></td>
-    <td align="center" width="100"><a href="https://www.warp.dev"><img src="./assets/logos/warp.png" width="56" height="56"/><br><sub><b>Warp</b></sub></a></td>
-    <td align="center" width="100"><a href="https://chat.openai.com"><img src="./assets/logos/openai.png" width="56" height="56"/><br><sub><b>ChatGPT</b></sub></a></td>
-    <td align="center" width="100"><a href="https://claude.ai"><img src="./assets/logos/claude.png" width="56" height="56"/><br><sub><b>Claude</b></sub></a></td>
-  </tr>
-</table>
+<p align="left">
+  <a href="https://www.anthropic.com/claude-code"><img src="https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white" /></a>
+  <a href="https://openclaw.ai"><img src="https://img.shields.io/badge/OpenClaw-0A0A0A?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyYzUuNSAwIDEwIDQuNSAxMCAxMHMtNC41IDEwLTEwIDEwUzIgMTcuNSAyIDEyIDYuNSAyIDEyIDJ6bTAgMkM3LjYgNCA0IDcuNiA0IDEyczMuNiA4IDggOCA4LTMuNiA4LTgtMy42LTgtOC04em0tMy41IDVsMyAzaC0ybDMgM2gtMmwzIDNoLTZ2LTl6Ii8+PC9zdmc+&logoColor=white" /></a>
+  <a href="https://github.com/hermes-agent"><img src="https://img.shields.io/badge/Hermes_Agent-7C5CFF?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyTDMgN3Y3YzAgNC41IDMuOCA4LjYgOSAxMCA1LjItMS40IDktNS41IDktMTBWN2wtOS01em0wIDQuNUwxNiA5djVjMCAyLjgtMS43IDUuNC00IDYtMi4zLS42LTQtMy4yLTQtNlY5bDQtMi41eiIvPjwvc3ZnPg==&logoColor=white" /></a>
+  <a href="https://openai.com/codex"><img src="https://img.shields.io/badge/Codex-000000?style=for-the-badge&logo=openai&logoColor=white" /></a>
+  <a href="https://gemini.google.com"><img src="https://img.shields.io/badge/Gemini-4285F4?style=for-the-badge&logo=googlegemini&logoColor=white" /></a>
+  <a href="https://antigravity.google"><img src="https://img.shields.io/badge/Antigravity-1a73e8?style=for-the-badge&logo=google&logoColor=white" /></a>
+  <a href="https://cursor.com"><img src="https://img.shields.io/badge/Cursor-000000?style=for-the-badge&logo=cursor&logoColor=white" /></a>
+  <a href="https://www.warp.dev"><img src="https://img.shields.io/badge/Warp-01A4FF?style=for-the-badge&logo=warp&logoColor=white" /></a>
+  <a href="https://chat.openai.com"><img src="https://img.shields.io/badge/ChatGPT-10A37F?style=for-the-badge&logo=openai&logoColor=white" /></a>
+  <a href="https://claude.ai"><img src="https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=anthropic&logoColor=white" /></a>
+</p>
 
 ---
 
